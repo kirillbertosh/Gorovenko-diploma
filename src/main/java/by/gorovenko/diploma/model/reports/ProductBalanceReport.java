@@ -15,7 +15,10 @@ public class ProductBalanceReport {
     private long id;
     @OneToOne
     private Goods goods;
-    @Column
+    @ElementCollection
+    @CollectionTable(name = "amount_in_storage")
+    @MapKeyColumn(name = "amount_in_storage_col")
+    @Column(name = "double_col")
     private Map<Storage, Double> amountInStorage;
 
     public ProductBalanceReport() {

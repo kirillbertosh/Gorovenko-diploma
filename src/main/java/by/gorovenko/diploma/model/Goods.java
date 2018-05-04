@@ -21,6 +21,11 @@ public class Goods {
     @Column
     private String notes;
     @OneToMany
+    @JoinTable(name = "goods_product_group", joinColumns
+            = @JoinColumn(name = "goods_id",
+            referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "product_group_id",
+                    referencedColumnName = "id"))
     private Set<ProductGroup> productGroups;
 
     public Goods() {

@@ -22,6 +22,11 @@ public class CancellationAct {
     @Column
     private Date outcomingDate;
     @OneToMany
+    @JoinTable(name = "cancellation_act_coming_invoice", joinColumns
+            = @JoinColumn(name = "cancellation_act_id",
+            referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "coming_invoice_id",
+                    referencedColumnName = "id"))
     private Set<ComingInvoice> comingInvoices;
     @OneToOne
     private Goods goods;

@@ -11,7 +11,7 @@ public class SalesInvoice {
     @Id
     @GeneratedValue
     private long id;
-    @Column
+    @OneToOne
     private Goods goods;
     @Column
     private int amount;

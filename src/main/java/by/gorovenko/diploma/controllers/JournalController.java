@@ -1,5 +1,8 @@
 package by.gorovenko.diploma.controllers;
 
+import by.gorovenko.diploma.model.journals.ArrivalJournal;
+import by.gorovenko.diploma.model.journals.CommonJournal;
+import by.gorovenko.diploma.model.journals.ConsumptionJournal;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,17 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class JournalController {
 
     @GetMapping(value = "/arrival")
-    public ResponseEntity<?> getFullArrivalJournal() {
+    public ResponseEntity<ArrivalJournal> getFullArrivalJournal() {
         return null;
     }
 
     @GetMapping(value = "/consumption")
-    public ResponseEntity<?> getFullConsumptionJournal() {
+    public ResponseEntity<ConsumptionJournal> getFullConsumptionJournal() {
         return null;
     }
 
     @GetMapping(value = "/common")
-    public ResponseEntity<?> getCommonJournal() {
+    public ResponseEntity<CommonJournal> getCommonJournal() {
         return null;
     }
 }
