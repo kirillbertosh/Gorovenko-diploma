@@ -13,7 +13,8 @@ public class Storage {
     private String name;
     @Column
     private int storageNumber;
-
+    @Column
+    private String address;
 
     public Storage() {
 
@@ -39,12 +40,21 @@ public class Storage {
         this.storageNumber = storageNumber;
     }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
     @Override
     public String toString() {
         return "Storage{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", storageNumber=" + storageNumber +
+                ", address='" + address + '\'' +
                 '}';
     }
 }

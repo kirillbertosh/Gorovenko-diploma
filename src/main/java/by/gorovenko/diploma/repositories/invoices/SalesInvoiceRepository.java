@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface SalesInvoiceJournal extends JpaRepository<SalesInvoice, Long> {
+public interface SalesInvoiceRepository extends JpaRepository<SalesInvoice, Long> {
 
     Optional<SalesInvoice> findById(Long id);
 

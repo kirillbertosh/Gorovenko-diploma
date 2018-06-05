@@ -1,6 +1,7 @@
 package by.gorovenko.diploma.model.journals;
 
 import by.gorovenko.diploma.model.Goods;
+import by.gorovenko.diploma.model.Storage;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -24,6 +25,8 @@ public class CommonJournal {
     private double arrivalAmount;
     @Column
     private double consumptionAmount;
+    @OneToOne
+    private Storage storage;
     @Column
     private String notes;
 
@@ -83,6 +86,14 @@ public class CommonJournal {
         this.consumptionAmount = consumptionAmount;
     }
 
+    public void setStorage(Storage storage) {
+        this.storage = storage;
+    }
+
+    public Storage getStorage() {
+        return storage;
+    }
+
     public String getNotes() {
         return notes;
     }
@@ -101,6 +112,7 @@ public class CommonJournal {
                 ", goods=" + goods +
                 ", arrivalAmount=" + arrivalAmount +
                 ", consumptionAmount=" + consumptionAmount +
+                ", storage=" + storage +
                 ", notes='" + notes + '\'' +
                 '}';
     }

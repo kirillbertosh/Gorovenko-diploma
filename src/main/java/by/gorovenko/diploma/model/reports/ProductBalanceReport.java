@@ -15,11 +15,11 @@ public class ProductBalanceReport {
     private long id;
     @OneToOne
     private Goods goods;
-    @ElementCollection
-    @CollectionTable(name = "amount_in_storage")
-    @MapKeyColumn(name = "amount_in_storage_col")
-    @Column(name = "double_col")
-    private Map<Storage, Double> amountInStorage;
+    @Column
+    private double amount;
+    @OneToOne
+    private Storage storage;
+
 
     public ProductBalanceReport() {
 
@@ -37,12 +37,20 @@ public class ProductBalanceReport {
         this.goods = goods;
     }
 
-    public Map<Storage, Double> getAmountInStorage() {
-        return amountInStorage;
+    public double getAmount() {
+        return amount;
     }
 
-    public void setAmountInStorage(Map<Storage, Double> amountInStorage) {
-        this.amountInStorage = amountInStorage;
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public Storage getStorage() {
+        return storage;
+    }
+
+    public void setStorage(Storage storage) {
+        this.storage = storage;
     }
 
     @Override
@@ -50,7 +58,8 @@ public class ProductBalanceReport {
         return "ProductBalanceReport{" +
                 "id=" + id +
                 ", goods=" + goods +
-                ", amountInStorage=" + amountInStorage +
+                ", amount=" + amount +
+                ", storage=" + storage +
                 '}';
     }
 }

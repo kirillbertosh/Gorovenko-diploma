@@ -1,7 +1,7 @@
 package by.gorovenko.diploma.controllers;
 
-import by.gorovenko.diploma.model.journals.CommonJournal;
-import by.gorovenko.diploma.repositories.journals.CommonJournalRepository;
+import by.gorovenko.diploma.model.Storage;
+import by.gorovenko.diploma.repositories.StorageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/document/journal")
-public class JournalController {
+@RequestMapping("/storages")
+public class StorageController {
 
     @Autowired
-    private CommonJournalRepository repository;
+    private StorageRepository repository;
 
     @GetMapping("/all")
     public ResponseEntity findAll() {
@@ -27,22 +27,22 @@ public class JournalController {
     }
 
     @PostMapping("/")
-    public ResponseEntity save(@RequestBody CommonJournal journal) {
-        return new ResponseEntity<>(repository.save(journal), HttpStatus.OK);
+    public ResponseEntity save(@RequestBody Storage storage) {
+        return new ResponseEntity<>(repository.save(storage), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity update(@PathVariable Long id, @RequestBody CommonJournal journal) {
-        Optional<CommonJournal> journal1 = repository.findById(id);
-        repository.delete(journal1.get());
-        repository.save(journal);
-        return new ResponseEntity<>(journal, HttpStatus.OK);
+    public ResponseEntity update(@PathVariable Long id, @RequestBody Storage storage) {
+        Optional<Storage> storage1 = repository.findById(id);
+        repository.delete(storage1.get());
+        repository.save(storage);
+        return new ResponseEntity<>(storage, HttpStatus.OK);
     }
 
     @DeleteMapping("/id")
     public ResponseEntity delete(@PathVariable Long id) {
-        Optional<CommonJournal> journal = repository.findById(id);
-        repository.delete(journal.get());
+        Optional<Storage> storage = repository.findById(id);
+        repository.delete(storage.get());
         return new ResponseEntity(HttpStatus.OK);
     }
 }

@@ -14,16 +14,16 @@ public class ExpenditureDynamicReport {
     private long id;
     @OneToOne
     private Goods goods;
-    @OneToOne
-    private Measure measure;
     @Column
-    private double beginingMonthBalance;
+    private double beginMonthBalance;
     @Column
     private double arrivalPerMonth;
     @Column
     private double consumptionPerMonth;
     @Column
     private double endMonthBalance;
+    @Column
+    private String month;
 
     public ExpenditureDynamicReport() {
 
@@ -41,20 +41,20 @@ public class ExpenditureDynamicReport {
         this.goods = goods;
     }
 
-    public Measure getMeasure() {
-        return measure;
+    public String getMonth() {
+        return month;
     }
 
-    public void setMeasure(Measure measure) {
-        this.measure = measure;
+    public void setMonth(String month) {
+        this.month = month;
     }
 
-    public double getBeginingMonthBalance() {
-        return beginingMonthBalance;
+    public double getBeginMonthBalance() {
+        return beginMonthBalance;
     }
 
-    public void setBeginingMonthBalance(double beginingMonthBalance) {
-        this.beginingMonthBalance = beginingMonthBalance;
+    public void setBeginMonthBalance(double beginMonthBalance) {
+        this.beginMonthBalance = beginMonthBalance;
     }
 
     public double getArrivalPerMonth() {
@@ -86,11 +86,11 @@ public class ExpenditureDynamicReport {
         return "ExpenditureDynamicReport{" +
                 "id=" + id +
                 ", goods=" + goods +
-                ", measure=" + measure +
-                ", beginingMonthBalance=" + beginingMonthBalance +
+                ", beginMonthBalance=" + beginMonthBalance +
                 ", arrivalPerMonth=" + arrivalPerMonth +
                 ", consumptionPerMonth=" + consumptionPerMonth +
                 ", endMonthBalance=" + endMonthBalance +
+                ", month='" + month + '\'' +
                 '}';
     }
 }

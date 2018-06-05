@@ -3,6 +3,7 @@ package by.gorovenko.diploma.model.reports;
 import by.gorovenko.diploma.model.Goods;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 @Table(name = "product_departure_reports")
@@ -13,6 +14,8 @@ public class ProductDepartureReport {
     private long id;
     @OneToOne
     private Goods goods;
+    @Column
+    private Date date;
     @Column
     private double amount;
     @Column
@@ -70,11 +73,20 @@ public class ProductDepartureReport {
         this.notes = notes;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
         return "ProductDepartureReport{" +
                 "id=" + id +
                 ", goods=" + goods +
+                ", date=" + date +
                 ", amount=" + amount +
                 ", price=" + price +
                 ", totalPrice=" + totalPrice +

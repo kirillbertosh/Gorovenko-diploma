@@ -13,4 +13,8 @@ public class ProductReport {
     @GeneratedValue
     private long id;
 
+    public ProductReport() {
+
+    }
+
 }

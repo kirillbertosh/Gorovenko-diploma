@@ -1,6 +1,7 @@
 package by.gorovenko.diploma.model.invoices;
 
 import by.gorovenko.diploma.model.Goods;
+import by.gorovenko.diploma.model.Storage;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -18,18 +19,17 @@ public class CancellationAct {
     @Column
     private long actNumber;
     @Column
+    private double amount;
+    @Column
     private Date incomingDate;
     @Column
     private Date outcomingDate;
-    @OneToMany
-    @JoinTable(name = "cancellation_act_coming_invoice", joinColumns
-            = @JoinColumn(name = "cancellation_act_id",
-            referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "coming_invoice_id",
-                    referencedColumnName = "id"))
-    private Set<ComingInvoice> comingInvoices;
     @OneToOne
     private Goods goods;
+    @OneToOne
+    private Storage storage;
+    @Column
+    private String notes;
     
     public CancellationAct() {
         
@@ -55,6 +55,14 @@ public class CancellationAct {
         this.actNumber = actNumber;
     }
 
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
     public Date getIncomingDate() {
         return incomingDate;
     }
@@ -71,14 +79,6 @@ public class CancellationAct {
         this.outcomingDate = outcomingDate;
     }
 
-    public Set<ComingInvoice> getComingInvoices() {
-        return comingInvoices;
-    }
-
-    public void setComingInvoices(Set<ComingInvoice> comingInvoices) {
-        this.comingInvoices = comingInvoices;
-    }
-
     public Goods getGoods() {
         return goods;
     }
@@ -87,16 +87,34 @@ public class CancellationAct {
         this.goods = goods;
     }
 
+    public Storage getStorage() {
+        return storage;
+    }
+
+    public void setStorage(Storage storage) {
+        this.storage = storage;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
     @Override
     public String toString() {
         return "CancellationAct{" +
                 "id=" + id +
                 ", actDate=" + actDate +
                 ", actNumber=" + actNumber +
+                ", amount=" + amount +
                 ", incomingDate=" + incomingDate +
                 ", outcomingDate=" + outcomingDate +
-                ", comingInvoices=" + comingInvoices +
                 ", goods=" + goods +
+                ", storage=" + storage +
+                ", notes='" + notes + '\'' +
                 '}';
     }
 }

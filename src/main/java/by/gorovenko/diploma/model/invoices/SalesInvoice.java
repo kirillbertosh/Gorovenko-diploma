@@ -1,5 +1,6 @@
 package by.gorovenko.diploma.model.invoices;
 
+import by.gorovenko.diploma.model.Contractor;
 import by.gorovenko.diploma.model.Goods;
 
 import javax.persistence.*;
@@ -13,6 +14,10 @@ public class SalesInvoice {
     private long id;
     @OneToOne
     private Goods goods;
+    @Column
+    private long invoiceNumber;
+    @OneToOne
+    private Contractor contractor;
     @Column
     private int amount;
     @Column
@@ -42,6 +47,14 @@ public class SalesInvoice {
 
     public void setGoods(Goods goods) {
         this.goods = goods;
+    }
+
+    public void setContractor(Contractor contractor) {
+        this.contractor = contractor;
+    }
+
+    public Contractor getContractor() {
+        return contractor;
     }
 
     public int getAmount() {
@@ -100,11 +113,21 @@ public class SalesInvoice {
         this.addedValueTaxPrice = addedValueTaxPrice;
     }
 
+    public long getInvoiceNumber() {
+        return invoiceNumber;
+    }
+
+    public void setInvoiceNumber(long invoiceNumber) {
+        this.invoiceNumber = invoiceNumber;
+    }
+
     @Override
     public String toString() {
         return "SalesInvoice{" +
                 "id=" + id +
                 ", goods=" + goods +
+                ", invoiceNumber=" + invoiceNumber +
+                ", contractor=" + contractor +
                 ", amount=" + amount +
                 ", price=" + price +
                 ", priceWithoutDiscount=" + priceWithoutDiscount +
